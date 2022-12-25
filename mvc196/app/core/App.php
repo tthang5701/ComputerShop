@@ -1,5 +1,5 @@
 <?php
-define('HOME_URL', 'http://localhost/PHP2020/mvc196/home/index');
+define('HOME_URL', 'http://localhost/ComputerShop/mvc196/home/index');
 class App
 {
     protected $controllerName = 'Home';

@@ -17,7 +17,7 @@
     function chartStatistic30Days() {
       $.ajax({
         type: "POST",
-        url: "http://localhost/PHP2020/mvc196/dashboard/getDataForChart",
+        url: "http://localhost/ComputerShop/mvc196/dashboard/getDataForChart",
         dataType: "JSON",
         success: function(response) {
           chart.setData(response);
