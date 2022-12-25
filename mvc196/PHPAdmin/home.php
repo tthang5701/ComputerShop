@@ -49,7 +49,7 @@ include('includes/navbar.php');
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Doanh thu</div>
 				<?php
-				$sql = "SELECT sum(total_price) as total FROM order_detail ";
+				$sql = "SELECT sum(total) as total FROM orders";
 				$query = mysqli_query($connection, $sql);
 				$totalProduct = $query->fetch_assoc();
 				?>

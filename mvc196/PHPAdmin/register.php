@@ -194,7 +194,7 @@ include('includes/navbar.php');
 		<div class="card-body">
 			<div class="table-responsive">
 				<?php
-				$query = "SELECT * FROM users";
+				$query = "SELECT * FROM users WHERE status <> 0";
 				$query_run = mysqli_query($connection, $query);
 				?>
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

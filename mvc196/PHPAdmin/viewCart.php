@@ -22,10 +22,9 @@ $id = $_GET['id'];
 				$query = "SELECT orders.id as id, orders.created_date as created_date, 
 						orders.status as status, payments.name as payment,
 						users.name as fullname, users.username as username, 
-						users.address as address FROM orders
+						users.address as address, users.phone_number as phone FROM orders
 						JOIN payments ON payments.id = orders.payment_id
-						JOIN cart ON orders.cart_id = cart.id
-						JOIN users ON cart.user_id = users.id
+						JOIN users ON orders.user_id = users.id
 						WHERE orders.id = $id";
 				$query_run = mysqli_query($connection, $query);
 				
@@ -33,20 +32,24 @@ $id = $_GET['id'];
 					$row = mysqli_fetch_assoc($query_run)
 				?>
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<!-- <div class="form-group col-md-6">
 					<label for="code">Mã đơn hàng</label>
 					<input type="text" class="form-control" id="code" disabled value="<?= $row['id']?>">
-				</div>
+				</div> -->
 				<div class="form-group col-md-6">
 					<label for="inputPassword4">Tên khách hàng</label>
 					<input type="text" class="form-control" id="inputPassword4" disabled 
 						value="<?= $row['fullname'] != null ? $row['fullname'] : $row['username']?>">
 				</div>
-			</div>
-			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="inputEmail4">Ngày đặt</label>
 					<input type="text" class="form-control" id="inputEmail4" disabled value="<?= date('d/m/Y', strtotime($row['created_date']))?>">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputEmail4">Số điện thoại</label>
+					<input type="text" class="form-control" id="inputEmail4" disabled value="<?= $row['phone']?>">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="inputPassword4">Địa chỉ</label>

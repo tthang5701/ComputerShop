@@ -93,7 +93,7 @@ include('includes/navbar.php');
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"> Xóa tin tức</h5>
+				<h5 class="modal-title" id="exampleModalLabel"> Ẩn tin tức</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -105,11 +105,11 @@ include('includes/navbar.php');
 
 					<input type="hidden" name="delete_id" id="delete_id">
 
-					<h4> Bạn chắc chắn muốn xóa?</h4>
+					<h4> Bạn chắc chắn muốn ẩn tin tức?</h4>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal"> Hủy </button>
-					<button type="submit" name="deletedata" class="btn btn-primary"> Xóa </button>
+					<button type="submit" name="deletedata" class="btn btn-primary"> Ẩn </button>
 				</div>
 			</form>
 
@@ -145,7 +145,7 @@ include('includes/navbar.php');
 		<div class="card-body">
 			<div class="table-responsive">
 				<?php
-				$query = "SELECT * FROM news";
+				$query = "SELECT * FROM news WHERE status <> 0";
 				$query_run = mysqli_query($connection, $query);
 				?>
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -155,7 +155,7 @@ include('includes/navbar.php');
 							<th> Tiêu đề </th>
 							<th> Nội dung </th>
 							<th> Sửa </th>
-							<th> Xóa </th>
+							<th> Ẩn </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -173,7 +173,7 @@ include('includes/navbar.php');
 									</td>
 									<td class="center">
 										<button type="button" class="btn btn-danger deleteBtn" 
-											id="deleteBtn" value="<?php echo $row['id']; ?>"> Xóa </button>
+											id="deleteBtn" value="<?php echo $row['id']; ?>"> Ẩn </button>
 									</td>
 								</tr>
 						<?php

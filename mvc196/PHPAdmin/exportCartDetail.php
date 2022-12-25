@@ -9,13 +9,12 @@
 	$output = "";
 
 	$query = "SELECT orders.id as id, orders.created_date as created_date, 
-			orders.status as status, payments.name as payment,
-			users.name as fullname, users.username as username, 
-			users.address as address FROM orders
-			JOIN payments ON payments.id = orders.payment_id
-			JOIN cart ON orders.cart_id = cart.id
-			JOIN users ON cart.user_id = users.id
-			WHERE orders.id = $id";
+				orders.status as status, payments.name as payment,
+				users.name as fullname, users.username as username, 
+				users.address as address, users.phone_number as phone FROM orders
+				JOIN payments ON payments.id = orders.payment_id
+				JOIN users ON orders.user_id = users.id
+				WHERE orders.id = $id";
 	$query_run = mysqli_query($connection, $query);
 	
 	if (mysqli_num_rows($query_run) > 0) {
@@ -30,9 +29,11 @@
 		} elseif($status == 2){
 			$content = 'Đã giao thành công';
 		}
-		$output .= "<div style='font-family: Times New Roman'><label>Mã đơn hàng: ".$id."</label>
-					<label>Tên khách hàng: ".($row['fullname'] != null ? $row['fullname'] : $row['username'])."</label></div>
-					<div style='font-family: Times New Roman'><label>Ngày đặt: ".date('d/m/Y', strtotime($row['created_date']))."</label>
+		$output .= "<div style='font-family: Times New Roman'>
+					<label>Tên khách hàng: ".($row['fullname'] != null ? $row['fullname'] : $row['username'])."</label>
+					<label>Ngày đặt: ".date('d/m/Y', strtotime($row['created_date']))."</label></div>
+					<div style='font-family: Times New Roman'>
+					<label>Số điện thoại: ".$row['phone']."</label>
 					<label>Địa chỉ: ".$row['address']."</label></div>
 					<div style='font-family: Times New Roman'><label>Phương thức thanh toán: ".$row['payment']."</label>
 					<label>Trạng thái: ".$content."</label></div>

@@ -5,12 +5,12 @@ if(isset($_POST['deletedata']))
 {
     $id = $_POST['delete_id'];
 
-	$query = "DELETE FROM news WHERE id='$id' ";
+	$query = "UPDATE news SET status = 0 WHERE id='$id' ";
     $query_run = mysqli_query($connection, $query);
  
 	if($query_run)
 	{
-		$_SESSION['status'] = "Xóa thành công";
+		$_SESSION['status'] = "Cập nhật trạng thái thành công";
 		$_SESSION['status_code'] = "success";
 		header('Location: news.php'); 
 	}

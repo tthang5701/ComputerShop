@@ -166,7 +166,7 @@ include('includes/navbar.php');
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"> Xóa sản phẩm</h5>
+				<h5 class="modal-title" id="exampleModalLabel"> Ẩn sản phẩm</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -178,11 +178,11 @@ include('includes/navbar.php');
 
 					<input type="hidden" name="delete_id" id="delete_id">
 
-					<h4> Bạn chắc chắn muốn xóa?</h4>
+					<h4> Bạn chắc chắn muốn ẩn sản phẩm?</h4>
 				</div>
 				<div class="modal-footer">
 					<button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal"> Hủy </button>
-					<button type="submit" name="deletedata" class="btn btn-primary"> Xóa </button>
+					<button type="submit" name="deletedata" class="btn btn-primary"> Ẩn </button>
 				</div>
 			</form>
 
@@ -218,7 +218,7 @@ include('includes/navbar.php');
 
 			<div class="table-responsive">
 				<?php
-				$query = "SELECT * FROM products";
+				$query = "SELECT * FROM products WHERE status <> 0";
 				$query_run = mysqli_query($connection, $query);
 				?>
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -229,7 +229,7 @@ include('includes/navbar.php');
 							<th> Giá </th>
 							<th> Số lượng </th>
 							<th> Sửa </th>
-							<th> Xóa </th>
+							<th> Ẩn </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -249,7 +249,7 @@ include('includes/navbar.php');
 											data-image="<?php echo $row['image']; ?>"> Sửa </button>
 									</td>
 									<td class="center">
-										<button type="button" class="btn btn-danger deleteBtn" id="deleteBtn" value="<?php echo $row['id']; ?>"> Xóa </button>
+										<button type="button" class="btn btn-danger deleteBtn" id="deleteBtn" value="<?php echo $row['id']; ?>"> Ẩn </button>
 									</td>
 								</tr>
 						<?php
