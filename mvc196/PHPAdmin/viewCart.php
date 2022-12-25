@@ -6,31 +6,34 @@ $id = $_GET['id'];
 ?>
 
 <div class="container-fluid">
-
+	<?php
+		$query = "SELECT orders.id as id, orders.created_date as created_date, 
+				orders.status as status, payments.name as payment,
+				users.name as fullname, users.username as username, 
+				users.address as address, users.phone_number as phone FROM orders
+				JOIN payments ON payments.id = orders.payment_id
+				JOIN users ON orders.user_id = users.id
+				WHERE orders.id = $id";
+		$query_run = mysqli_query($connection, $query);
+		
+		if (mysqli_num_rows($query_run) > 0) {
+			$row = mysqli_fetch_assoc($query_run)
+	?>
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			
 			<h6 class="m-0 font-weight-bold text-primary">Chi tiết đơn hàng
-			<a href="exportCartDetail.php?id=<?=$id?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="float: right;"><i
-        		class="fas fa-download fa-sm text-white-50"></i> Xuất hóa đơn</a>
+			<?php 
+				if($row['status'] != 5)
+					echo '<a href="exportCartDetail.php?id=<?=$id?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="float: right;"><i
+					class="fas fa-download fa-sm text-white-50"></i> Xuất hóa đơn</a>'
+			?>
 			</h6>
 		</div>
 
 		<div class="card-body">
-			<?php
-				$query = "SELECT orders.id as id, orders.created_date as created_date, 
-						orders.status as status, payments.name as payment,
-						users.name as fullname, users.username as username, 
-						users.address as address, users.phone_number as phone FROM orders
-						JOIN payments ON payments.id = orders.payment_id
-						JOIN users ON orders.user_id = users.id
-						WHERE orders.id = $id";
-				$query_run = mysqli_query($connection, $query);
-				
-				if (mysqli_num_rows($query_run) > 0) {
-					$row = mysqli_fetch_assoc($query_run)
-				?>
+			
 			<div class="form-row">
 				<!-- <div class="form-group col-md-6">
 					<label for="code">Mã đơn hàng</label>
@@ -71,6 +74,8 @@ $id = $_GET['id'];
 							$content = 'Đang vận chuyển';
 						} elseif($status == 2){
 							$content = 'Đã giao thành công';
+						}  elseif($status == 5){
+							$content = 'Đã hủy';
 						}
 					?>
 					<input type="text" class="form-control" id="inputPassword4" disabled value="<?= $content ?>">

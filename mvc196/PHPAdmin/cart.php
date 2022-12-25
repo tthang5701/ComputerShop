@@ -174,6 +174,10 @@ include('includes/navbar.php');
 												$content = 'Đã giao thành công';
 												$type = 'success';
 												$disable = 'disabled';
+											} elseif($status == 5){
+												$content = 'Đã hủy';
+												$type = 'danger';
+												$disable = 'disabled';
 											}
 										?>
 										<a href="updateCart.php?id=<?= $row['id']; ?>">
