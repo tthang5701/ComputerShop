@@ -10,7 +10,7 @@ include('./security.php')
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
-		<div class="sidebar-brand-text mx-3">QUẢN TRỊ</div>
+		<div class="sidebar-brand-text mx-3" style="font-size: 13px;">TRANG QUẢN TRỊ</div>
 	</a>
 
 	<!-- Divider -->
@@ -38,18 +38,42 @@ include('./security.php')
 		</a>
 	</li>
 
-	<li class="nav-item <?= $page == 'product.php' ? 'active' : ''; ?>">
+	<!-- <li class="nav-item <?= $page == 'product.php' ? 'active' : ''; ?>">
 		<a class="nav-link" href="product.php">
 			<i class="fas fa-fw fa fa-file"></i>
 			<span>Sản phẩm</span>
 		</a>
+	</li> -->
+	<li class="nav-item <?= $page == 'product.php' || $page == 'statisticProduct.php' ? 'active' : ''; ?>">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			<i class="fas fa-fw fa fa-file"></i>
+			<span>Sản phẩm</span>
+		</a>
+		<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<a class="collapse-item" href="product.php">Quản lý sản phẩm</a>
+				<a class="collapse-item" href="statisticProduct.php">Thống kê</a>
+			</div>
+		</div>
 	</li>
 
-	<li class="nav-item <?= $page == 'cart.php' ? 'active' : ''; ?>">
+	<!-- <li class="nav-item <?= $page == 'cart.php' ? 'active' : ''; ?>">
 		<a class="nav-link" href="cart.php">
 			<i class="fas fa-fw fa fa-shopping-cart"></i>
 			<span>Đơn hàng</span>
 		</a>
+	</li> -->
+	<li class="nav-item <?= $page == 'cart.php' || $page == 'statisticCart.php' ? 'active' : ''; ?>">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-fw fa fa-shopping-cart"></i>
+			<span>Đơn hàng</span>
+		</a>
+		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<a class="collapse-item" href="cart.php">Quản lý đơn hàng</a>
+				<a class="collapse-item" href="statisticCart.php">Thống kê</a>
+			</div>
+		</div>
 	</li>
 
 	<li class="nav-item <?= $page == 'news.php' ? 'active' : ''; ?>">
@@ -251,9 +275,9 @@ include('./security.php')
 						</span>
 						<!-- <?php
 
-						echo '<img  class="img-profile rounded-circle" src=\'../avatar/'.$_SESSION['avatar'].'\' >';
+								echo '<img  class="img-profile rounded-circle" src=\'../avatar/' . $_SESSION['avatar'] . '\' >';
 
-						?> -->
+								?> -->
 						<img class="img-profile rounded-circle" src="https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg">
 					</a>
 					<!-- Dropdown - User Information -->
