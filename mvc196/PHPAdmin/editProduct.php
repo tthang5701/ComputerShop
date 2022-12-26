@@ -25,7 +25,7 @@ if(isset($_POST['editbtn']))
 
 	if($query_run)
 	{
-		$uploaddir = './img/';
+		$uploaddir = '../public/imgs/';
 		$uploadfile = $uploaddir . basename($_FILES['image']['name']);
 		move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
 		$_SESSION['status'] = "Sửa thành công";

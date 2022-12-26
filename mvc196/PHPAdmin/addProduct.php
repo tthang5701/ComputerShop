@@ -31,7 +31,7 @@ if(isset($_POST['addbtn']))
 		
 		if($query_run)
 		{
-			$uploaddir = './img/';
+			$uploaddir = '../public/imgs/';
 			$uploadfile = $uploaddir . basename($_FILES['image']['name']);
 			move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
 

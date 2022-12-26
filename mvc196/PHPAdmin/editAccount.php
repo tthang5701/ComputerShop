@@ -10,7 +10,6 @@ if(isset($_POST['editbtn']))
 	$phoneNumber = $_POST['phonenumber'];
     $password = $_POST['password'];
     $cpassword = $_POST['confirmpassword'];
-	$avatar = $_FILES['avatar']["name"];
     $address = $_POST['address'];
     $role_id = $_POST['role_id'];
 
@@ -36,10 +35,6 @@ if(isset($_POST['editbtn']))
 
 			if($query_run)
 			{
-				$uploaddir = './avatar/';
-				$uploadfile = $uploaddir . basename($_FILES['avatar']['name']);
-				move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadfile);
-				
 				$_SESSION['status'] = "Sửa thành công";
 				$_SESSION['status_code'] = "success";
 				header('Location: register.php'); 
