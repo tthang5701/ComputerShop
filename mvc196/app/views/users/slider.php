@@ -8,7 +8,7 @@
 					</div>
 					<div class="text list_2_of_1">
 						<h2><?= $value['name'] ?></h2>
-						<?= $value['content'] ?>
+						<?= $value['description'] ?>
 						<?php if (!empty($logged_in)) {
 							$URL = BASE_URL . "Cart/addToCart/" . $user_id;
 						} else {

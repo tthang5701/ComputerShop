@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webphukiendt`
+-- Cơ sở dữ liệu: `webphukiendt`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brands`
+-- Cấu trúc bảng cho bảng `brands`
 --
 
 CREATE TABLE `brands` (
@@ -34,7 +34,7 @@ CREATE TABLE `brands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `brands`
+-- Đang đổ dữ liệu cho bảng `brands`
 --
 
 INSERT INTO `brands` (`id`, `name`, `status`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `brands` (`id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Cấu trúc bảng cho bảng `cart`
 --
 
 CREATE TABLE `cart` (
@@ -59,17 +59,18 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cart`
+-- Đang đổ dữ liệu cho bảng `cart`
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `created_date`) VALUES
 (40, 0, '2022-11-07'),
-(41, 11, '2022-11-07');
+(41, 11, '2022-11-07'),
+(42, 7, '2023-01-07');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart_detail`
+-- Cấu trúc bảng cho bảng `cart_detail`
 --
 
 CREATE TABLE `cart_detail` (
@@ -91,7 +92,7 @@ INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `quantity`, `price`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Cấu trúc bảng cho bảng `categories`
 --
 
 CREATE TABLE `categories` (
@@ -101,7 +102,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `categories`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `status`) VALUES
@@ -113,7 +114,7 @@ INSERT INTO `categories` (`id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Cấu trúc bảng cho bảng `news`
 --
 
 CREATE TABLE `news` (
@@ -126,7 +127,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- Đang đổ dữ liệu cho bảng `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `code`, `image`, `content`, `status`) VALUES
@@ -136,7 +137,7 @@ INSERT INTO `news` (`id`, `name`, `code`, `image`, `content`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -149,7 +150,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `payment_id`, `status`, `total`, `created_date`) VALUES
@@ -158,15 +159,13 @@ INSERT INTO `orders` (`id`, `user_id`, `payment_id`, `status`, `total`, `created
 (67, 8, 8, 2, 41800000, '2022-11-20'),
 (68, 8, 8, 0, 41800000, '2022-11-20'),
 (69, 11, 8, 2, 50600000, '2022-11-28'),
-(70, 11, 2, 1, 33000, '2022-11-28'),
 (71, 11, 8, 5, 418000, '2022-11-28'),
-(75, 11, 8, 0, 11000000, '2023-01-07');
+(75, 11, 8, 5, 11000000, '2023-01-07'),
+(76, 11, 8, 0, 41800000, '2023-01-07'),
+(77, 11, 8, 0, 52833000, '2023-01-07'),
+(78, 7, 8, 0, 41800000, '2023-01-07'),
+(79, 7, 8, 0, 19800000, '2023-01-07');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `order_detail`
---
 
 CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL,
@@ -180,7 +179,7 @@ CREATE TABLE `order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_detail`
+-- Đang đổ dữ liệu cho bảng `order_detail`
 --
 
 INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`, `consignee_name`, `consignee_address`, `consignee_phone`) VALUES
@@ -194,12 +193,19 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`,
 (153, 69, 85, 1, 8000000, '', '', ''),
 (154, 70, 79, 1, 30000, '', '', ''),
 (155, 71, 74, 2, 190000, '', '', ''),
-(156, 75, 93, 1, 10000000, 'Bùi Văn Hà', '58 Trần Nguyên Hãn,Hà Nội', '0365932577');
+(156, 75, 93, 1, 10000000, 'Bùi Văn Hà', '58 Trần Nguyên Hãn,Hà Nội', '0365932577'),
+(157, 76, 88, 1, 38000000, 'Bùi Văn Lâm', '58 Trần Nguyên Hãn,Hà Nội', '0365932400'),
+(158, 77, 88, 1, 38000000, 'Trần Thu Hằng', '58 Trần Nguyên Hãn,Hà Nội', '123123123123'),
+(159, 77, 79, 1, 30000, 'Trần Thu Hằng', '58 Trần Nguyên Hãn,Hà Nội', '123123123123'),
+(160, 77, 86, 1, 10000000, 'Trần Thu Hằng', '58 Trần Nguyên Hãn,Hà Nội', '123123123123'),
+(161, 78, 88, 1, 38000000, 'Bùi Văn Lâm', '58 Trần Nguyên Hãn,Hà Nội', '0365932577'),
+(162, 79, 86, 1, 10000000, 'Trần Thu Hằng', '58 Trần Nguyên Hãn,Hà Nội', '0365932400'),
+(163, 79, 85, 1, 8000000, 'Trần Thu Hằng', '58 Trần Nguyên Hãn,Hà Nội', '0365932400');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payments`
+-- Cấu trúc bảng cho bảng `payments`
 --
 
 CREATE TABLE `payments` (
@@ -209,7 +215,7 @@ CREATE TABLE `payments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `payments`
+-- Đang đổ dữ liệu cho bảng `payments`
 --
 
 INSERT INTO `payments` (`id`, `name`, `description`) VALUES
@@ -219,7 +225,7 @@ INSERT INTO `payments` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -238,37 +244,37 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `code`, `image`, `price`, `quantity`, `category_id`, `brand_id`, `status`, `content`, `description`, `view_count`) VALUES
-(37, 'Tai nghe Acer', 'M01', 'tai-nghe-chup-tai-ovann-x4-den-do-8195-7878852-ca1aa00b14c481b2d777db4310d211401665153813.jpg', 150000, 98, 4, 2, 1, '', '', 1),
-(38, 'Macbook Pro', 'M50', 'download (1)1665153594.jpg', 2500000, 100, 1, 5, 1, '', '', 1),
-(39, 'iphone 7', 'M50', 'iphone-7-plus-red-128gb-400x4601665153864.png', 15000000, 100, 3, 5, 1, '', '', 0),
-(44, 'Oppo F3 plus', 'f3plus', 'iphone-7-plus-256gb-300x3001665153922.jpg', 7500000, 100, 3, 3, 1, '', '', 0),
-(45, 'Desktop Mac', 'ip5', 'featured-section-new-to-imac_2x1665153699.jpg', 12000000, 100, 3, 5, 1, '', '', 1),
-(65, 'Bộ sạc Iphone', 'h7', '21665153459.jpg', 22000, 100, 4, 5, 1, '', '', 2),
-(66, 'Máy ảnh Canon chính hãng', 'y7', 'canon-eos-1d-x-2-1-min1665153411.jpg', 8000000, 96, 2, 4, 1, '', '', 5),
-(67, 'Bộ sạc Combo iPhone 5/6/6+ (Pisen)', 'j8', '31665153514.jpg', 250000, 100, 4, 5, 1, '', '', 1),
-(68, 'Ốp lưng Galaxy S8 Plus Standing 2017 chính hãng', 'b6', 'timthumb (1)1665153326.jpg', 60000, 100, 4, 5, 1, '', '', 0),
-(69, 'Bao da Clear View Galaxy S8 Plus Standing 2017 chÃ­nh hÃ£ng ', 'b6', 'timthumb (2).jpg', 70000, 100, 4, 6, 1, '', '', 0),
-(70, 'Bao da Clear View Galaxy S8 Plus Standing 2017 chÃ­nh hÃ£ng ', 'b6', 'timthumb.jpg', 80000, 100, 4, 6, 1, '', '', 0),
-(71, 'Gậy tự sướng mini Samsung', 'k8', 'gay tu suong mini 2_200x2001665153217.jpg', 50000, 100, 4, 21, 1, '', '', 0),
-(72, 'Gậy tự sướng Samsung', 'k8', 'gay ts gap gon dau 5_200x2001665153176.jpg', 50000, 100, 4, 3, 1, '', '', 2),
-(73, 'Gậy tự sướng mini Sony', 'k8', '3112575548_1184480815_200x2001665153131.jpg', 20000, 100, 4, 1, 1, '', '', 1),
-(74, 'Pin điện thoại LG Trắng', 'p7', 'image-6282355-202a86ba4c35ce1b5941fab448818358-product1665153062.jpg', 190000, 88, 4, 2, 1, '', '', 2),
-(79, 'Sạc dự phòng xiami trắng ', 'j8', 'd8e-pin-sac-xiaomi-10000mah-gen-2-gia-re1665152948.jpg', 30000, 97, 4, 2, 1, '', '', 8),
-(80, 'Sạc dự phòng Acer 15.000MAH', 'j8', '797-sac-du-phong-genai-trang-10000mah-gia-re1665152869.jpg', 25000, 100, 4, 2, 1, '', '', 1),
-(81, 'Sạc dự phòng 10.000MAH', 'j8', '0a7-sac-du-phong-romoss-polymoss-10000mah-gia-re1665152811.jpg', 80000, 99, 4, 1, 1, '', '', 2),
-(85, 'Canon EOS-1D X', 'canon', '3-4a620da2-d3d1-46b3-82b7-6522066a48ed1665152728.jpg', 8000000, 99, 2, 1, 1, '', '', 2),
-(86, 'Canon EOS 6D', 'canon 6d', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665152687.jpg', 10000000, 98, 2, 1, 1, '', '', 3),
-(88, 'Macbook pro 2017', 'mp67', 'featured-section-new-to-imac_2x1665156961.jpg', 38000000, 94, 1, 1, 1, '', '', 25),
-(93, 'SONY CAM V1', 'SONY_SP1', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665156911.jpg', 10000000, 6, 4, 4, 1, 'Máy ảnh đời mới Canon', 'Máy ảnh chính hãng Canon nhỏ gọn, dễ sử dụng, đem lại hiệu quả chụp ảnh chất lượng cao, máy có khả năng chống nước...', 61);
+(37, 'Tai nghe Acer', 'M01', 'tai-nghe-chup-tai-ovann-x4-den-do-8195-7878852-ca1aa00b14c481b2d777db4310d211401665153813.jpg', 150000, 98, 4, 2, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 1),
+(38, 'Macbook Pro', 'M50', 'download (1)1665153594.jpg', 2500000, 100, 1, 5, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 1),
+(39, 'iphone 7', 'M50', 'iphone-7-plus-red-128gb-400x4601665153864.png', 15000000, 100, 3, 5, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 0),
+(44, 'Oppo F3 plus', 'f3plus', 'iphone-7-plus-256gb-300x3001665153922.jpg', 7500000, 100, 3, 3, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 0),
+(45, 'Desktop Mac', 'ip5', 'featured-section-new-to-imac_2x1665153699.jpg', 12000000, 100, 3, 5, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 1),
+(65, 'Bộ sạc Iphone', 'h7', '21665153459.jpg', 22000, 100, 4, 5, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 2),
+(66, 'Máy ảnh Canon chính hãng', 'y7', 'canon-eos-1d-x-2-1-min1665153411.jpg', 8000000, 96, 2, 4, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 5),
+(67, 'Bộ sạc Combo iPhone 5/6/6+ (Pisen)', 'j8', '31665153514.jpg', 250000, 100, 4, 5, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 1),
+(68, 'Ốp lưng Galaxy S8 Plus Standing 2017 chính hãng', 'b6', 'timthumb (1)1665153326.jpg', 60000, 100, 4, 5, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 0),
+(69, 'Bao da Clear View Galaxy S8 Plus Standing 2017 chÃ­nh hÃ£ng ', 'b6', 'timthumb (2).jpg', 70000, 100, 4, 6, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 0),
+(70, 'Bao da Clear View Galaxy S8 Plus Standing 2017 chÃ­nh hÃ£ng ', 'b6', 'timthumb.jpg', 80000, 100, 4, 6, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 0),
+(71, 'Gậy tự sướng mini Samsung', 'k8', 'gay tu suong mini 2_200x2001665153217.jpg', 50000, 100, 4, 21, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 0),
+(72, 'Gậy tự sướng Samsung', 'k8', 'gay ts gap gon dau 5_200x2001665153176.jpg', 50000, 100, 4, 3, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 2),
+(73, 'Gậy tự sướng mini Sony', 'k8', '3112575548_1184480815_200x2001665153131.jpg', 20000, 100, 4, 1, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 1),
+(74, 'Pin điện thoại LG Trắng', 'p7', 'image-6282355-202a86ba4c35ce1b5941fab448818358-product1665153062.jpg', 190000, 88, 4, 2, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 2),
+(79, 'Sạc dự phòng xiami trắng ', 'j8', 'd8e-pin-sac-xiaomi-10000mah-gen-2-gia-re1665152948.jpg', 30000, 96, 4, 2, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 9),
+(80, 'Sạc dự phòng Acer 15.000MAH', 'j8', '797-sac-du-phong-genai-trang-10000mah-gia-re1665152869.jpg', 25000, 100, 4, 2, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 1),
+(81, 'Sạc dự phòng 10.000MAH', 'j8', '0a7-sac-du-phong-romoss-polymoss-10000mah-gia-re1665152811.jpg', 80000, 99, 4, 1, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 3),
+(85, 'Canon EOS-1D X', 'canon', '3-4a620da2-d3d1-46b3-82b7-6522066a48ed1665152728.jpg', 8000000, 98, 2, 1, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 3),
+(86, 'Canon EOS 6D', 'canon 6d', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665152687.jpg', 10000000, 96, 2, 1, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', '', 6),
+(88, 'Macbook pro 2017', 'mp67', 'featured-section-new-to-imac_2x1665156961.jpg', 38000000, 91, 1, 1, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', NULL, 33),
+(93, 'SONY CAM V1', 'SONY_SP1', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665156911.jpg', 10000000, 6, 4, 4, 1, 'MacBook Air có hai tuỳ chọn phiên bản bộ nhớ là 256GB và 512GB. Ổ cứng SSD có trên máy cũng có tốc độ gấp đôi. Dung lượng RAM 8GB là một con số dư giả cho đa phần người dùng hiện tại.\n\nMacBook Air M1 sở hữu cảm biến vân tay đặt trên phím nguồn của máy. Bảo mật vân tay Touch ID không chỉ tiện dụng khi mở máy và thanh toán online, mà còn bảo vệ tất cả các dữ liệu quan trọng của bạn có trên chiếc máy tính này.\n\nBạn có thể sử dụng webcam có sẵn trên máy để thực hiện các cuộc gọi FaceTime HD sắc nét. MacBook Air được trang bị 2 cổng USB-C hỗ trợ Thunderbolt 3 cùng một cổng tai nghe 3.5mm. Với các cổng kết nối này, bạn có thể sử dụng MacBook Air trên màn hình ngoài, truyền tải dữ liệu với tốc độ chóng mặt tới 40GB/s.', NULL, 62);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Cấu trúc bảng cho bảng `roles`
 --
 
 CREATE TABLE `roles` (
@@ -278,7 +284,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `roles`
+-- Đang đổ dữ liệu cho bảng `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES
@@ -288,7 +294,7 @@ INSERT INTO `roles` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slider`
+-- Cấu trúc bảng cho bảng `slider`
 --
 
 CREATE TABLE `slider` (
@@ -299,7 +305,7 @@ CREATE TABLE `slider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `slider`
+-- Đang đổ dữ liệu cho bảng `slider`
 --
 
 INSERT INTO `slider` (`id`, `title`, `image`, `status`) VALUES
@@ -310,7 +316,7 @@ INSERT INTO `slider` (`id`, `title`, `image`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -326,54 +332,54 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone_number`, `username`, `role_id`, `status`) VALUES
-(0, 'Trần Thu Hằng', 'hang@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Thái Bình', '0312648789', 'hang', 2, 1),
-(1, 'Admin', 'admin@gmail.com', '7488e331b8b64e5794da3fa4eb10ad5d', '', '', 'admin', 1, 1),
-(7, 'Bùi Văn Tiến', 'tienvanbui1982001@gmail.com', '4116e05581ccd1aa4692146691b46fe2', 'Hoài Đức,Hà Nội', '0365932647', 'tienvanbui', 2, 1),
-(8, 'Nguyễn Văn Nam', 'tienvanbui1982001@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Hoài Đức,Hà Nội', '0123456789', 'nampro123', 2, 1),
-(11, 'Khách hàng', 'kh123@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Hà Nội', '0973456789', 'user', 2, 1),
-(21, 'a', 'a@gmail.com', '202cb962ac59075b964b07152d234b70', '', '0979202938', 'd', 2, 1);
+(0, 'Trần Thu Hằng', 'hang@gmail.com', '123456', 'Thái Bình', '0312648789', 'hang', 2, 1),
+(1, 'Admin', 'admin@gmail.com', 'admin12345', NULL, NULL, 'admin', 1, 1),
+(7, 'Nguyễn Văn Tiến', 'nguyenvantien123@gmail.com', 'hiTien12345', 'Hoài Đức,Hà Nội', '0365932647', 'tienvanbui', 2, 1),
+(8, 'Nguyễn Văn Nam', 'tienvanbui1982001@gmail.com', '1982001000', 'Hoài Đức,Hà Nội', '0123456789', 'nampro123', 2, 1),
+(11, 'Khách hàng', 'kh123@gmail.com', '123456', 'Hà Nội', '0973456789', 'user', 2, 1),
+(23, 'Nguyễn Hải Ngọc', 'haingoc@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Nhổn,Nam Từ Liêm,Hà Nội', '0365974210', 'haingoc', 2, 0);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `brands`
+-- Chỉ mục cho bảng `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cart`
+-- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_carts` (`user_id`);
 
 --
--- Indexes for table `cart_detail`
+-- Chỉ mục cho bảng `cart_detail`
 --
 ALTER TABLE `cart_detail`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categories`
+-- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news`
+-- Chỉ mục cho bảng `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
@@ -381,7 +387,7 @@ ALTER TABLE `orders`
   ADD KEY `fg_payment_order` (`payment_id`);
 
 --
--- Indexes for table `order_detail`
+-- Chỉ mục cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
@@ -389,137 +395,137 @@ ALTER TABLE `order_detail`
   ADD KEY `order_product` (`order_id`);
 
 --
--- Indexes for table `payments`
+-- Chỉ mục cho bảng `payments`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
+-- Chỉ mục cho bảng `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `slider`
+-- Chỉ mục cho bảng `slider`
 --
 ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fg_user_role` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `brands`
+-- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT for table `cart_detail`
+-- AUTO_INCREMENT cho bảng `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT cho bảng `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
--- AUTO_INCREMENT for table `order_detail`
+-- AUTO_INCREMENT cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
--- AUTO_INCREMENT for table `payments`
+-- AUTO_INCREMENT cho bảng `payments`
 --
 ALTER TABLE `payments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT cho bảng `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `slider`
+-- AUTO_INCREMENT cho bảng `slider`
 --
 ALTER TABLE `slider`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cart`
+-- Các ràng buộc cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `user_carts` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `fg_payment_order` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`);
 
 --
--- Constraints for table `order_detail`
+-- Các ràng buộc cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_cart` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `order_product` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `users`
+-- Các ràng buộc cho bảng `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fg_user_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

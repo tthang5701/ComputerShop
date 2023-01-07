@@ -12,7 +12,7 @@
 				<div class="grid_1_of_4 images_1_of_4">
 					<a href="<?= BASE_URL ?>public/imgs/<?= $valueProduct_data['image'] ?>"><img src="<?= BASE_URL ?>public/imgs/<?= $valueProduct_data['image'] ?>" alt="<?= $valueProduct_data['image'] ?>" /></a>
 					<h2 style="font-weight: 900;"><?= $valueProduct_data['name'] ?></h2>
-					<?= $valueProduct_data['content'] ?>
+					<?= $valueProduct_data['description'] ?>
 					<p style="margin-top: 20px;"><span class="price"><?= number_format($valueProduct_data['price']).'VND' ?></p>
 					<div class="button" style="margin:40px auto;width:100%"><span><a href="<?= BASE_URL . "productDetail/index/" . $valueProduct_data['id'] ?>" class="details">Chi tiết</a></span></div>
 				</div>
