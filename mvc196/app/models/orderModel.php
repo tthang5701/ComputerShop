@@ -41,12 +41,11 @@ class orderModel extends Connection
   {
     return $this->db->update($table, $data, $conditon);
   }
-  public function selectOrderTracking( $tableOrder,$tablePayment,$tableCart,$tableUser,$userId)
+  public function selectOrderTracking( $tableOrder,$tablePayment,$tableUser,$userId)
   {
     $sql = "SELECT  `$tableOrder`.`id` as order_id, `$tableOrder`.`status` as `order_status`, `$tableUser`.`name` as order_user,`$tableOrder`.`total` as order_total, `$tablePayment`.`name` as payment_name, `$tableOrder`.`created_date` as created_date FROM `$tableOrder` 
     INNER JOIN $tablePayment ON `$tableOrder`.`payment_id` = `$tablePayment`.`id`
-    INNER JOIN $tableCart ON `$tableOrder`.`cart_id` = `$tableCart`.`id`
-    INNER JOIN $tableUser ON `$tableCart`.`user_id` = `$tableUser`.`id`
+    INNER JOIN $tableUser ON `$tableOrder`.`user_id` = `$tableUser`.`id`
     WHERE `$tableUser`.`id` = $userId;
     ";
     return $this->db->select($sql);

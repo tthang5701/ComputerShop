@@ -38,7 +38,7 @@
               </tr>
             </table>
           </div>
-          <h2 style="width: 100%;margin-top:100px;">Thông tin người dùng</h2>
+          <h2 style="width: 100%;margin-top:100px;">Thông tin người đặt hàng </h2>
           <div>
             <div style="display:flex;justify-content:space-between;padding:20px 0;">
               <label for="name">Tên</label>
@@ -61,13 +61,26 @@
               <input type="text" name="phoneNumber" value="<?= $user[0]['phone_number'] ?>" style="width: 50%;padding:2px 5px;" disabled>
             </div>
           </div>
-          <form action="<?= BASE_URL . 'order/store' ?>" method="POST" style="display: flex;justify-content:center;margin-top:10px;">
+          <h2 style="width: 100%;margin-top:100px;">Thông tin người nhận hàng </h2> 
+          <form action="<?= BASE_URL . 'order/store' ?>" method="POST">
             <input name="payment_id" type="hidden" value="<?= $payment_id ?>" />
             <input name="cart_id" type="hidden" value="<?= $cart_id[0]['id'] ?>" />
+            <input name="user_id" type="hidden" value="<?= $user[0]['id'] ?>" />
             <input name="total" type="hidden" value="<?= ($sumtotalPrice[0]['subTotal']) + (($sumtotalPrice[0]['subTotal']) * 10 / 100) ?>" />
-            
-			<button class="btn-update_profile" style="background-color: #525252;"><a style="color: white;" href="<?= BASE_URL . 'cart/index/' . $user[0]['id']?>">Hủy</a></button>
-			<button type="submit" class="btn-update_profile" name="btnSubmit">Xác nhận</button>
+            <div style="display:flex;justify-content:space-between;padding:20px 0;">
+              <label for="received_user_name">Tên người nhận</label>
+              <input type="text" name="received_user_name" style="width: 50%;padding:2px 5px;" >
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:20px 0;">
+              <label for="received_user_address">Địa chỉ</label>
+              <input type="text" name="received_user_address"  style="width: 50%;padding:2px 5px;" >
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:20px 0;">
+              <label for="received_user_phoneNumber">Số điện thoại</label>
+              <input type="text" name="received_user_phoneNumber" style="width: 50%;padding:2px 5px;" >
+            </div>
+            <button class="btn-update_profile" style="background-color: #525252;"><a style="color: white;" href="<?= BASE_URL . 'cart/index/' . $user[0]['id']?>">Hủy</a></button>
+            <button type="submit" style="margin-left:250px" class="btn-update_profile" name="btnSubmit">Xác nhận</button>
           </form>
         </div>
       </div>

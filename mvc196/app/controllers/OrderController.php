@@ -42,9 +42,9 @@ class OrderController extends BaseController
         $product = $productModel->selectProductById($this->tableProduct, "id = $productId");
         return $product[0]['quantity'];
     }
-    private function orderStorationProcessing($getOrderModel, $cart_id, $getCartModel,$latest_order_id)
+    private function orderStorationProcessing($getOrderModel, $cart_id, $getCartModel,$latest_order_id,$receive_user_name,$receive_user_address,$receive_user_phoneNumber)
     {
-        $order = $getOrderModel->selectOrderItem($this->tableOrder, 'cart_id', $cart_id);
+        $order = $getOrderModel->selectOrderItem($this->tableOrder, 'id', $latest_order_id);
         $productsInCart = $getCartModel->getSpecifyInCart($this->tableCartDetail, $cart_id);
         foreach ($productsInCart as $product) {
             $data = [
@@ -52,7 +52,10 @@ class OrderController extends BaseController
                 'product_id' => $product['product_id'],
                 'quantity' => $product['quantity'],
                 'price' => $product['price'],
-                'total_price' => $product['total_price'],
+                'consignee_name' =>$receive_user_name,
+                'consignee_address'=>$receive_user_address,
+                'consignee_phone' =>$receive_user_phoneNumber
+
             ];
             $getOrderModel->insertToOrderTable($this->tableDetailOrder, $data);
             $currentQuantities = $this->getQuantitiesCurrentOfProduct($product['product_id']);
@@ -65,9 +68,13 @@ class OrderController extends BaseController
     public function store()
     {
         $payment_id = $this->input->post('payment_id');
+        $user_id  = $this->input->post('user_id');
         $cart_id  = $this->input->post('cart_id');
+        $receive_user_name = $this->input->post('received_user_name');
+        $receive_user_address = $this->input->post('received_user_address');
+        $receive_user_phoneNumber = $this->input->post('received_user_phoneNumber');
         $dataInsertedOrder = array(
-            'cart_id' => $cart_id,
+            'user_id' => $user_id,
             'payment_id' => $payment_id,
             'status' => 0,
             'created_date' => date('Y-m-d'),
@@ -79,7 +86,7 @@ class OrderController extends BaseController
         if ($isStoredOrderTable == true) {
             $orderInserted = $getOrderModel->selectLatestOrderIn($this->tableOrder);
             $getCartModel = $this->loadModel('cartModel');
-            $orderId = $this->orderStorationProcessing($getOrderModel, $cart_id, $getCartModel,$orderInserted[0]['latest_order_id']);
+            $orderId = $this->orderStorationProcessing($getOrderModel, $cart_id, $getCartModel,$orderInserted[0]['latest_order_id'],$receive_user_name,$receive_user_address,$receive_user_phoneNumber);
             header("Location:" . BASE_URL . "order/thankForOrdering/" . $orderId);
         }
     }
@@ -98,7 +105,7 @@ class OrderController extends BaseController
         $data = $this->headerData;
         $this->loadView('header', $data);
         $orderModel = $this->loadModel('orderModel');
-        $orderList = $orderModel->selectOrderTracking($this->tableOrder, $this->tablePayment,$this->tableCart,$this->tableUser,$userId[0]);
+        $orderList = $orderModel->selectOrderTracking($this->tableOrder, $this->tablePayment,$this->tableUser,$userId[0]);
         $data['newOrderList'] = $orderList;
         $this->loadView('orderListView', $data);
         $this->loadView('footer', $data);
@@ -149,31 +156,5 @@ class OrderController extends BaseController
             header("Location:" . BASE_URL . "order/orderTracking/" . $user_id);
         }
     }
-    //admin modul 
-    public function list()
-    {
-        //model process
-        session::checkLoginSession();
-        $orderModel = $this->loadModel('orderModel');
-        $data['orders'] = $orderModel->selectAllOrder($this->tableOrder, $this->tableDetailOrder, $this->tableProduct, $this->tablePayment, $this->tableUser, $this->tableCart);
-        //view process
-        $this->loadViewAdmin('header');
-        $this->loadViewAdmin('dashboardView');
-        $this->loadViewAdmin('order/list', $data);
-        $this->loadViewAdmin('footer');
-    }
-    public function delete($orderId)
-    {
-        //model process
-        session::checkLoginSession();
-        $orderModel = $this->loadModel('orderModel');
-        $isDeleted = $orderModel->deleteOrder($this->tableOrder, "id = $orderId[0]");
-        if ($isDeleted == true) {
-            session::set('message_success', 'Xóa đơn hàng thành công');
-            header("Location:" . BASE_URL . "order/list");
-        } else {
-            session::set('message_fail', 'Xóa đơn hàng không thành công');
-            header("Location:" . BASE_URL . "order/list");
-        }
-    }
+   
 }

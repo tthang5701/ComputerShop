@@ -18,11 +18,11 @@ class LoginController extends BaseController
     public function checkLogin()
     {
         $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $password = md5($this->input->post('password'));
         $logInModel  = $this->loadModel('loginModel');
         $checked = $logInModel->logIn('users', $username, $password);
         if ($checked == 0) {
-            session::set('login_status', "Mật khẩu hoặc tài khoản không đúng.Xin thử lại!");
+            session::set('login_status', $password);
             header("Location:" . LOGIN_URL_DEFAULT);
         } else {
             $resultAfterLogin = $logInModel->getLogIn('users', $username, $password);
@@ -51,19 +51,13 @@ class LoginController extends BaseController
     }
     public function logOut()
     {
-        // if ($this->session->get('user_id') !== false) {
-        //     //$this->updateOnlineStatusOfUser($this->session->get('user_id'), 0);
-        // }
-        // if ($this->session->get('admin_id') !== false) {
-        //     //$this->updateOnlineStatusOfUser($this->session->get('admin_id'), 0);
-        // }
         session::destroySession();
         header("Location:" . LOGIN_URL_DEFAULT);
     }
     public function register()
     {
         $name = $this->input->post('name');
-        $password = $this->input->post('password');
+        $password = md5($this->input->post('password'));
         $email = $this->input->post('email');
         $address = $this->input->post('address');
         $phoneNumber = $this->input->post('phoneNumber');

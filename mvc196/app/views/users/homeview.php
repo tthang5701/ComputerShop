@@ -10,7 +10,7 @@
 					<div class="grid_1_of_4 images_1_of_4">
 						<a href="<?= BASE_URL . "public/imgs/" . $data['image'] ?>"><img src="<?= BASE_URL . "public/imgs/" . $data['image'] ?>" alt="<?= BASE_URL . "public/imgs/" . $data['image'] ?>"></a>
 						<h2><?= $data['name'] ?></h2>
-						<?= $data['content'] ?>
+						<?= $data['description'] ?>
 						<p style="margin-top: 20px;"><span class="price"><?= number_format($data['price']).'VND'?></span></p>
 						<div class="button" style="margin:40px auto;width:100%"><span><a href="<?= BASE_URL . "productDetail/index/" . $data['id'] ?>" class="details">Chi tiết</a></span></div>
 					</div>
