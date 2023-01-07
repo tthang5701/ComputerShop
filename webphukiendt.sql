@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 05, 2023 at 05:12 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th1 07, 2023 lúc 02:51 PM
+-- Phiên bản máy phục vụ: 10.4.25-MariaDB
+-- Phiên bản PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webphukiendt`
+-- Cơ sở dữ liệu: `webphukiendt`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brands`
+-- Cấu trúc bảng cho bảng `brands`
 --
 
 CREATE TABLE `brands` (
@@ -34,7 +34,7 @@ CREATE TABLE `brands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `brands`
+-- Đang đổ dữ liệu cho bảng `brands`
 --
 
 INSERT INTO `brands` (`id`, `name`, `status`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `brands` (`id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Cấu trúc bảng cho bảng `cart`
 --
 
 CREATE TABLE `cart` (
@@ -59,7 +59,7 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cart`
+-- Đang đổ dữ liệu cho bảng `cart`
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `created_date`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `cart` (`id`, `user_id`, `created_date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart_detail`
+-- Cấu trúc bảng cho bảng `cart_detail`
 --
 
 CREATE TABLE `cart_detail` (
@@ -81,10 +81,17 @@ CREATE TABLE `cart_detail` (
   `total_price` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `cart_detail`
+--
+
+INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `quantity`, `price`, `total_price`) VALUES
+(256, 41, 88, 1, '38000000', 38000000);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Cấu trúc bảng cho bảng `categories`
 --
 
 CREATE TABLE `categories` (
@@ -94,7 +101,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `categories`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `status`) VALUES
@@ -106,7 +113,7 @@ INSERT INTO `categories` (`id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Cấu trúc bảng cho bảng `news`
 --
 
 CREATE TABLE `news` (
@@ -119,18 +126,17 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- Đang đổ dữ liệu cho bảng `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `code`, `image`, `content`, `status`) VALUES
 (9, 'Chrysalis: Saturn’s Ancient, Missing Moon', '1153', 'news0031664504831.jpg', 'However, a new modeling study by astronomers at MIT and elsewhere has found that, while the two planets may have once been in sync, Saturn has since escaped Neptune’s pull. What was responsible for this planetary realignment? The research team has one meticulously tested hypothesis: a missing moon. Their study was published in the journal Science on September 15.\r\n\r\nIn the study, the team proposes that Saturn, which today hosts 83 moons, once harbored at least one more, an extra satellite that they named Chrysalis. Together with its siblings, the astronomers suggest, Chrysalis orbited Saturn for several billion years, pulling and tugging on the planet in a way that kept its tilt, or “obliquity,” in resonance with Neptune.', 1),
-(10, 'Cassini Data Reveals Likely Subsurface Ocean on Titan', '1154', 'news0011664504785.jpg', 'HOMESPACE NEWS\r\nCassini Data Reveals Likely Subsurface Ocean on Titan\r\nTOPICS:AstronomyCassini-Huygens MissionJPLNASASaturnTitan\r\n\r\nBy JIA-RUI COOK, JET PROPULSION LABORATORY JUNE 29, 2012\r\n\r\nInside Titan Saturn Moon\r\nThis artist’s concept shows a possible scenario for the internal structure of Titan, as suggested by data from NASA’s Cassini spacecraft. Scientists have been trying to determine what is under Titan’s organic-rich atmosphere and icy crust. Data from the radio science experiment make the strongest case yet for a global subsurface ocean, sitting above a subsurface layer of high-pressure ice and a water-infused silicate core. Credit: Angelo Tavani\r\n\r\nBy using data from NASA’s Cassini spacecraft to measure variations in the gravitational pull of Titan, researchers were able to determine Titan’s internal structure, finding that Titan likely harbors a layer of liquid water under its ice shell.\r\n\r\nData from NASA’s Cassini spacecraft have revealed Saturn’s moon Titan likely harbors a layer of liquid water under its ice shell.\r\n\r\nResearchers saw a large amount of squeezing and stretching as the moon orbited Saturn. They deduced that if Titan were composed entirely of stiff rock, the gravitational attraction of Saturn would cause bulges, or solid “tides,” on the moon only 3 feet (1 meter) in height. Spacecraft data show Saturn creates solid tides approximately 30 feet (10 meters) in height, which suggests Titan is not made entirely of solid rocky material. The finding appears in today’s edition of the journal Science.\r\n\r\n“Cassini’s detection of large tides on Titan leads to the almost inescapable conclusion that there is a hidden ocean at depth,” said Luciano Iess, the paper’s lead author and a Cassini team member at the Sapienza University of Rome, Italy. “The search for water is an important goal in solar system exploration, and now we’ve spotted another place where it is abundant.”\r\n\r\nTitan takes only 16 days to orbit Saturn, and scientists were able to study the moon’s shape at different parts of its orbit. Because Titan is not spherical, but slightly elongated like a football, its long axis grew when it was closer to Saturn. Eight days later, when Titan was farther from Saturn, it became less elongated and more nearly round. Cassini measured the gravitational effect of that squeeze and pull.\r\n\r\n', 1),
-(15, '1', '1', 'surprise1.jpeg', '1', 0);
+(10, 'Cassini Data Reveals Likely Subsurface Ocean on Titan', '1154', 'news0011664504785.jpg', 'HOMESPACE NEWS\r\nCassini Data Reveals Likely Subsurface Ocean on Titan\r\nTOPICS:AstronomyCassini-Huygens MissionJPLNASASaturnTitan\r\n\r\nBy JIA-RUI COOK, JET PROPULSION LABORATORY JUNE 29, 2012\r\n\r\nInside Titan Saturn Moon\r\nThis artist’s concept shows a possible scenario for the internal structure of Titan, as suggested by data from NASA’s Cassini spacecraft. Scientists have been trying to determine what is under Titan’s organic-rich atmosphere and icy crust. Data from the radio science experiment make the strongest case yet for a global subsurface ocean, sitting above a subsurface layer of high-pressure ice and a water-infused silicate core. Credit: Angelo Tavani\r\n\r\nBy using data from NASA’s Cassini spacecraft to measure variations in the gravitational pull of Titan, researchers were able to determine Titan’s internal structure, finding that Titan likely harbors a layer of liquid water under its ice shell.\r\n\r\nData from NASA’s Cassini spacecraft have revealed Saturn’s moon Titan likely harbors a layer of liquid water under its ice shell.\r\n\r\nResearchers saw a large amount of squeezing and stretching as the moon orbited Saturn. They deduced that if Titan were composed entirely of stiff rock, the gravitational attraction of Saturn would cause bulges, or solid “tides,” on the moon only 3 feet (1 meter) in height. Spacecraft data show Saturn creates solid tides approximately 30 feet (10 meters) in height, which suggests Titan is not made entirely of solid rocky material. The finding appears in today’s edition of the journal Science.\r\n\r\n“Cassini’s detection of large tides on Titan leads to the almost inescapable conclusion that there is a hidden ocean at depth,” said Luciano Iess, the paper’s lead author and a Cassini team member at the Sapienza University of Rome, Italy. “The search for water is an important goal in solar system exploration, and now we’ve spotted another place where it is abundant.”\r\n\r\nTitan takes only 16 days to orbit Saturn, and scientists were able to study the moon’s shape at different parts of its orbit. Because Titan is not spherical, but slightly elongated like a football, its long axis grew when it was closer to Saturn. Eight days later, when Titan was farther from Saturn, it became less elongated and more nearly round. Cassini measured the gravitational effect of that squeeze and pull.\r\n\r\n', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -143,7 +149,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `payment_id`, `status`, `total`, `created_date`) VALUES
@@ -153,12 +159,13 @@ INSERT INTO `orders` (`id`, `user_id`, `payment_id`, `status`, `total`, `created
 (68, 8, 8, 0, 41800000, '2022-11-20'),
 (69, 11, 8, 2, 50600000, '2022-11-28'),
 (70, 11, 2, 1, 33000, '2022-11-28'),
-(71, 11, 8, 5, 418000, '2022-11-28');
+(71, 11, 8, 5, 418000, '2022-11-28'),
+(75, 11, 8, 0, 11000000, '2023-01-07');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detail`
+-- Cấu trúc bảng cho bảng `order_detail`
 --
 
 CREATE TABLE `order_detail` (
@@ -166,29 +173,33 @@ CREATE TABLE `order_detail` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
-  `price` int(10) UNSIGNED NOT NULL
+  `price` int(10) UNSIGNED NOT NULL,
+  `consignee_name` varchar(200) NOT NULL,
+  `consignee_address` varchar(500) NOT NULL,
+  `consignee_phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_detail`
+-- Đang đổ dữ liệu cho bảng `order_detail`
 --
 
-INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
-(144, 64, 88, 1, 38000000),
-(145, 64, 79, 1, 30000),
-(146, 64, 81, 1, 80000),
-(149, 66, 86, 1, 10000000),
-(150, 67, 88, 1, 38000000),
-(151, 64, 88, 1, 38000000),
-(152, 69, 88, 1, 38000000),
-(153, 69, 85, 1, 8000000),
-(154, 70, 79, 1, 30000),
-(155, 71, 74, 2, 190000);
+INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`, `consignee_name`, `consignee_address`, `consignee_phone`) VALUES
+(144, 64, 88, 1, 38000000, '', '', ''),
+(145, 64, 79, 1, 30000, '', '', ''),
+(146, 64, 81, 1, 80000, '', '', ''),
+(149, 66, 86, 1, 10000000, '', '', ''),
+(150, 67, 88, 1, 38000000, '', '', ''),
+(151, 64, 88, 1, 38000000, '', '', ''),
+(152, 69, 88, 1, 38000000, '', '', ''),
+(153, 69, 85, 1, 8000000, '', '', ''),
+(154, 70, 79, 1, 30000, '', '', ''),
+(155, 71, 74, 2, 190000, '', '', ''),
+(156, 75, 93, 1, 10000000, 'Bùi Văn Hà', '58 Trần Nguyên Hãn,Hà Nội', '0365932577');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payments`
+-- Cấu trúc bảng cho bảng `payments`
 --
 
 CREATE TABLE `payments` (
@@ -198,7 +209,7 @@ CREATE TABLE `payments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `payments`
+-- Đang đổ dữ liệu cho bảng `payments`
 --
 
 INSERT INTO `payments` (`id`, `name`, `description`) VALUES
@@ -208,7 +219,7 @@ INSERT INTO `payments` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -227,7 +238,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `code`, `image`, `price`, `quantity`, `category_id`, `brand_id`, `status`, `content`, `description`, `view_count`) VALUES
@@ -250,14 +261,14 @@ INSERT INTO `products` (`id`, `name`, `code`, `image`, `price`, `quantity`, `cat
 (80, 'Sạc dự phòng Acer 15.000MAH', 'j8', '797-sac-du-phong-genai-trang-10000mah-gia-re1665152869.jpg', 25000, 100, 4, 2, 1, '', '', 1),
 (81, 'Sạc dự phòng 10.000MAH', 'j8', '0a7-sac-du-phong-romoss-polymoss-10000mah-gia-re1665152811.jpg', 80000, 99, 4, 1, 1, '', '', 2),
 (85, 'Canon EOS-1D X', 'canon', '3-4a620da2-d3d1-46b3-82b7-6522066a48ed1665152728.jpg', 8000000, 99, 2, 1, 1, '', '', 2),
-(86, 'Canon EOS 6D', 'canon 6d', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665152687.jpg', 10000000, 98, 2, 1, 1, '', '', 2),
-(88, 'Macbook pro 2017', 'mp67', 'featured-section-new-to-imac_2x1665156961.jpg', 38000000, 94, 1, 1, 1, '', '', 24),
-(93, 'SONY CAM V1', 'SONY_SP1', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665156911.jpg', 10000000, 7, 4, 4, 1, 'Máy ảnh đời mới Canon', 'Máy ảnh chính hãng Canon nhỏ gọn, dễ sử dụng, đem lại hiệu quả chụp ảnh chất lượng cao, máy có khả năng chống nước...', 59);
+(86, 'Canon EOS 6D', 'canon 6d', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665152687.jpg', 10000000, 98, 2, 1, 1, '', '', 3),
+(88, 'Macbook pro 2017', 'mp67', 'featured-section-new-to-imac_2x1665156961.jpg', 38000000, 94, 1, 1, 1, '', '', 25),
+(93, 'SONY CAM V1', 'SONY_SP1', '2-a89056cf-a3ca-4d58-952e-5dcfaaae8d8b1665156911.jpg', 10000000, 6, 4, 4, 1, 'Máy ảnh đời mới Canon', 'Máy ảnh chính hãng Canon nhỏ gọn, dễ sử dụng, đem lại hiệu quả chụp ảnh chất lượng cao, máy có khả năng chống nước...', 61);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Cấu trúc bảng cho bảng `roles`
 --
 
 CREATE TABLE `roles` (
@@ -267,7 +278,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `roles`
+-- Đang đổ dữ liệu cho bảng `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES
@@ -277,7 +288,7 @@ INSERT INTO `roles` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slider`
+-- Cấu trúc bảng cho bảng `slider`
 --
 
 CREATE TABLE `slider` (
@@ -288,7 +299,7 @@ CREATE TABLE `slider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `slider`
+-- Đang đổ dữ liệu cho bảng `slider`
 --
 
 INSERT INTO `slider` (`id`, `title`, `image`, `status`) VALUES
@@ -299,7 +310,7 @@ INSERT INTO `slider` (`id`, `title`, `image`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -315,7 +326,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone_number`, `username`, `role_id`, `status`) VALUES
@@ -326,42 +337,42 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone_number
 (11, 'Khách hàng', 'kh123@gmail.com', '123456', 'Hà Nội', '0973456789', 'user', 2, 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `brands`
+-- Chỉ mục cho bảng `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cart`
+-- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_carts` (`user_id`);
 
 --
--- Indexes for table `cart_detail`
+-- Chỉ mục cho bảng `cart_detail`
 --
 ALTER TABLE `cart_detail`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categories`
+-- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news`
+-- Chỉ mục cho bảng `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
@@ -369,7 +380,7 @@ ALTER TABLE `orders`
   ADD KEY `fg_payment_order` (`payment_id`);
 
 --
--- Indexes for table `order_detail`
+-- Chỉ mục cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
@@ -377,137 +388,137 @@ ALTER TABLE `order_detail`
   ADD KEY `order_product` (`order_id`);
 
 --
--- Indexes for table `payments`
+-- Chỉ mục cho bảng `payments`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
+-- Chỉ mục cho bảng `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `slider`
+-- Chỉ mục cho bảng `slider`
 --
 ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fg_user_role` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `brands`
+-- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `cart_detail`
+-- AUTO_INCREMENT cho bảng `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT cho bảng `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
--- AUTO_INCREMENT for table `order_detail`
+-- AUTO_INCREMENT cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
--- AUTO_INCREMENT for table `payments`
+-- AUTO_INCREMENT cho bảng `payments`
 --
 ALTER TABLE `payments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT cho bảng `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `slider`
+-- AUTO_INCREMENT cho bảng `slider`
 --
 ALTER TABLE `slider`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cart`
+-- Các ràng buộc cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `user_carts` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `fg_payment_order` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`);
 
 --
--- Constraints for table `order_detail`
+-- Các ràng buộc cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_cart` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `order_product` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `users`
+-- Các ràng buộc cho bảng `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fg_user_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

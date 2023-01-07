@@ -10,16 +10,15 @@
 
 	$query = "SELECT orders.id as id, orders.created_date as created_date, 
 				orders.status as status, payments.name as payment,
-				users.name as fullname, users.username as username, 
-				users.address as address, users.phone_number as phone FROM orders
+				consignee_name as fullname, consignee_address as address, consignee_phone as phone 
+				FROM orders JOIN order_detail ON orders.id = order_detail.order_id
 				JOIN payments ON payments.id = orders.payment_id
-				JOIN users ON orders.user_id = users.id
 				WHERE orders.id = $id";
 	$query_run = mysqli_query($connection, $query);
 	
 	if (mysqli_num_rows($query_run) > 0) {
 		$row = mysqli_fetch_assoc($query_run);
-		$file_name = "HoaDon_".($row['fullname'] != null ? $row['fullname'] : $row['username'])."_".date('d/m/Y');
+		$file_name = "HoaDon_".($row['fullname'] != null ? $row['fullname'] : 'Ẩn danh')."_".date('d/m/Y');
 		header("Content-Disposition: attachment; filename=$file_name.xls");  
 		$status = $row['status'];
 		if($status == 0){
@@ -30,7 +29,7 @@
 			$content = 'Đã giao thành công';
 		}
 		$output .= "<div style='font-family: Times New Roman'>
-					<label>Tên khách hàng: ".($row['fullname'] != null ? $row['fullname'] : $row['username'])."</label>
+					<label>Tên khách hàng: ".($row['fullname'] != null ? $row['fullname'] : 'Ẩn danh')."</label>
 					<label>Ngày đặt: ".date('d/m/Y', strtotime($row['created_date']))."</label></div>
 					<div style='font-family: Times New Roman'>
 					<label>Số điện thoại: ".$row['phone']."</label>

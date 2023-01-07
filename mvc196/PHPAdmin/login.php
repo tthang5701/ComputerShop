@@ -5,7 +5,7 @@ session_start();
 if(isset($_POST['login_btn']))
 {
     $email_login = $_POST['emaill']; 
-    $password_login = $_POST['passwordd']; 
+    $password_login = md5($_POST['passwordd']); 
 
     $query = "SELECT * FROM users WHERE username='$email_login' AND password='$password_login' LIMIT 1";
     $query_run = mysqli_query($connection, $query);
