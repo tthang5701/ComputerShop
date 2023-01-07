@@ -25,7 +25,7 @@ if(isset($_POST['registerbtn']))
         if($password === $cpassword)
         {
             $query = "INSERT INTO users (name, username, email, phone_number, password, address, role_id, status)
-						VALUES ('$fullname', '$username', '$email', '$phoneNumber', '$password', '$address', '$role_id', '1')";
+						VALUES ('$fullname', '$username', '$email', '$phoneNumber', md5('$password'), '$address', '$role_id', '1')";
             $query_run = mysqli_query($connection, $query);
             
             if($query_run)

@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 07, 2023 lúc 03:25 PM
--- Phiên bản máy phục vụ: 10.4.25-MariaDB
--- Phiên bản PHP: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Jan 07, 2023 at 03:41 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -82,6 +82,13 @@ CREATE TABLE `cart_detail` (
   `total_price` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cart_detail`
+--
+
+INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `quantity`, `price`, `total_price`) VALUES
+(256, 41, 88, 1, '38000000', 38000000);
+
 -- --------------------------------------------------------
 
 --
@@ -152,7 +159,6 @@ INSERT INTO `orders` (`id`, `user_id`, `payment_id`, `status`, `total`, `created
 (67, 8, 8, 2, 41800000, '2022-11-20'),
 (68, 8, 8, 0, 41800000, '2022-11-20'),
 (69, 11, 8, 2, 50600000, '2022-11-28'),
-(70, 11, 2, 2, 33000, '2022-11-28'),
 (71, 11, 8, 5, 418000, '2022-11-28'),
 (75, 11, 8, 5, 11000000, '2023-01-07'),
 (76, 11, 8, 0, 41800000, '2023-01-07'),
@@ -160,11 +166,6 @@ INSERT INTO `orders` (`id`, `user_id`, `payment_id`, `status`, `total`, `created
 (78, 7, 8, 0, 41800000, '2023-01-07'),
 (79, 7, 8, 0, 19800000, '2023-01-07');
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `order_detail`
---
 
 CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL,

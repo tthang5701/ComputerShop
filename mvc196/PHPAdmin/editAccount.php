@@ -28,7 +28,7 @@ if(isset($_POST['editbtn']))
 			}
 			else {
 				$query = "UPDATE users SET name='$fullname', username='$username', email='$email',
-					password='$password', phone_number='$phoneNumber', address='$address', role_id='$role_id' WHERE id='$id' ";
+					password=md5('$password'), phone_number='$phoneNumber', address='$address', role_id='$role_id' WHERE id='$id' ";
 			}
 			
 			$query_run = mysqli_query($connection, $query);
